@@ -24,17 +24,13 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        // Загружаем фрагмент "Активность" при первом запуске
+
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .add(R.id.fragment_container, ActivityFragment(), "ACTIVITY_FRAGMENT")
                 .commit()
-            //supportFragmentManager.beginTransaction()
-               // .add(R.id.fragment_container, ActivityFragment(), "ACTIVITY_FRAGMENT")
-                //.commit()
         }
 
-        // Обрабатываем переключение вкладок
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_activity -> {
@@ -55,25 +51,23 @@ class MainActivity : AppCompatActivity() {
         val transaction = fragmentManager.beginTransaction()
 
         val existingFragment = fragmentManager.findFragmentByTag(tag)
-        //Log.d("FragmentTransaction", "Before transaction: ${fragmentManager.fragments.map { it.tag }}")
 
-        // Скрываем все фрагменты
         fragmentManager.fragments.forEach { fragment ->
             transaction.hide(fragment)
-            //Log.d("FragmentTransaction", "Fragment: ${fragment.tag}, isAdded: ${fragment.isAdded},, isHidden: ${fragment.isHidden}")
+
 
         }
 
         if (existingFragment != null) {
-            //Log.d("FragmentTransaction", "Showing existing fragment: $tag")
+
             transaction.show(existingFragment)
         } else {
-            //Log.d("FragmentTransaction", "Adding new fragment: $tag")
+
             transaction.add(R.id.fragment_container, fragment, tag) // Используем add вместо replace
         }
-        //Log.d("FragmentTransaction", "After transaction before commit: ${fragmentManager.fragments.map { it.tag }}")
+
         transaction.commitNow()
-       // Log.d("FragmentTransaction", "After transaction: ${fragmentManager.fragments.map { it.tag }}")
+
     }
 
 }

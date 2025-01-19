@@ -30,11 +30,10 @@ class ActivityFragment : Fragment(R.layout.fragment_activity) {
         val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout)
         val viewPager = view.findViewById<ViewPager2>(R.id.view_pager)
 
-        // Устанавливаем адаптер для ViewPager2
         val adapter = TabsPagerAdapter(this)
         viewPager.adapter = adapter
 
-        // Связываем TabLayout с ViewPager2
+
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when (position) {
                 0 -> "Мои"
