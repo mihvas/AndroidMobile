@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.task"
+    namespace = "com.example.task3"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.task"
+        applicationId = "com.example.task3"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -33,6 +33,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -42,7 +46,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
